@@ -18,11 +18,14 @@ function scrolltoAbout() {
   let sbarc = document.getElementById("sbar-content");
   sbarc.style.width = "0";
 }
+function backtoUp() {
+  let konten = document.getElementById("banner");
+  konten.scrollIntoView();
+}
 function scrolltoMain() {
   let konten = document.getElementById("main");
   konten.scrollIntoView();
 }
-
 function scrolltoMore() {
   let konten = document.getElementById("more");
   konten.scrollIntoView();
@@ -49,3 +52,34 @@ function lookBromo() {
   let img = document.getElementById("main-img");
   img.src = "assets/img/img2.jpg";
 }
+
+window.addEventListener("scroll", function () {
+  let scroll = document.querySelector(".up-bttn");
+  scroll.classList.toggle("active", window.scrollY > 500);
+});
+
+//hhkhkhjkhkj
+let upBttn = document.querySelector(".up-bttn");
+let footer = document.querySelector("#footer");
+
+function checkOffset() {
+  function getRectTop(el) {
+    let rect = el.getBoundingClientRect();
+    return rect.top;
+  }
+
+  if (
+    getRectTop(upBttn) + document.body.scrollTop + upBttn.offsetHeight >=
+    getRectTop(footer) + document.body.scrollTop - 10
+  )
+    upBttn.style.position = "absolute";
+  if (
+    document.body.scrollTop + window.innerHeight <
+    getRectTop(footer) + document.body.scrollTop
+  )
+    upBttn.style.position = "fixed"; // restore when you scroll up
+}
+
+document.addEventListener("scroll", function () {
+  checkOffset();
+});

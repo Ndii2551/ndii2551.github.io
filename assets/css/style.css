@@ -1,10 +1,6 @@
 /*google font*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
-/*local font*/
-@font-face {
-  font-family: "oak-bold";
-  src: url("/assets/fonts/oak-bold.ttf");
-}
+
 * {
   margin: 0;
   padding: 0;
@@ -114,7 +110,36 @@ nav {
   transform: scaleX(1);
   transform-origin: left;
 }
+.up-bttn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  z-index: 99;
+  margin: 0 20px 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: #ffffff11;
+  color: #fff;
+  border-radius: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s, opacity 0.2s ease-in-out;
+}
+.up-bttn:hover {
+  background: #ffffff23;
+}
+.active {
+  visibility: visible;
+  opacity: 1;
+}
 /*content*/
+main {
+  position: relative;
+}
 article {
   padding: 60px;
   color: #fff;
@@ -390,6 +415,15 @@ footer {
   color: #e0e0e0;
   font-size: 0.8em;
   opacity: 0.5;
+}
+.fb:hover {
+  color: #3b5998;
+}
+.ig:hover {
+  color: #e1306c;
+}
+.tw:hover {
+  color: #00acee;
 }
 
 /*responsive*/

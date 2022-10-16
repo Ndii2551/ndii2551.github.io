@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
   </head>
   <body>
@@ -25,7 +25,7 @@
           <span class="nav-bttnitem line"></span>
           <a class="nav-bttnitem" onclick="scrolltoAbout()">About me</a>
           <a class="nav-sbar" onclick="sidebarOpen()">
-            <span class="material-symbols-outlined"> menu </span>
+            <span class="material-symbols-rounded"> menu </span>
           </a>
         </div>
       </nav>
@@ -129,16 +129,19 @@
           </div>
         </div>
       </aside>
+      <div class="up-bttn" onclick="backtoUp()">
+        <span class="material-symbols-rounded"> arrow_upward </span>
+      </div>
     </main>
-    <footer>
+    <footer id="footer">
       <div class="footer-socmed">
-        <a class="a foot-socmed-a" href="https://www.facebook.com">
+        <a class="foot-socmed-a fb" href="https://www.facebook.com">
           <ion-icon name="logo-facebook"></ion-icon>
         </a>
-        <a class="a foot-socmed-a" href="https://www.instagram.com">
+        <a class="foot-socmed-a ig" href="https://www.instagram.com">
           <ion-icon name="logo-instagram"></ion-icon>
         </a>
-        <a class="a foot-socmed-a" href="https://www.twitter.com">
+        <a class="foot-socmed-a tw" href="https://www.twitter.com">
           <ion-icon name="logo-twitter"></ion-icon>
         </a>
       </div>
