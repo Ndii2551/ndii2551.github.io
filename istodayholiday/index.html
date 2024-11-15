@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>isTodayHoliday</title>
+    <link
+      rel="shortcut icon"
+      href="assets/img/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.30/fullpage.min.css"
+      integrity="sha512-/ObUqh1cljaDdbTKrXRG+6FTTS9RRDWOuBjMKeD7SZeQRICPDVA/qOJjWNilrNplbu7TNeqrBJ/LGBXL2EpaUg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h1><span style="color: black">is</span>TodayHoliday?</h1>
+        <h1>ID</h1>
+      </nav>
+    </header>
+    <main id="fullpage">
+      <div class="section centering" id="isHoliday"></div>
+      <div class="section">
+        <div><h1 id="dateNow"></h1></div>
+        <div id="holidayDesc">
+          <ul id="listOfDesc"></ul>
+        </div>
+      </div>
+    </main>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.30/vendors/easings.min.js"
+      integrity="sha512-SrKslwu6IjHEo/8mAOtkoUOT3MzHCEOFWktrC8BNtjPuBBYLYjg1y/Marat34uYfOfxDMLEwy8DLArWEVc2i+w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/4.0.30/fullpage.min.js"
+      integrity="sha512-XjHDYXqFXd3cWle8uxMnQFVcpjzm+mWZfJApBAyREtai0v/jJy9Na+PJlmrnaum7qb4B3BnwKAZd47piZRvoZA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        const apiKey = "yZIwDdZXSJ1qGBSZxXUTL7IpyYVwgOjl";
+        const country = "ID";
+        const year = new Date().getFullYear();
+        const month = new Date().getMonth() + 1;
+        const day = new Date().getDate();
+
+        $.ajax({
+          url: `https://calendarific.com/api/v2/holidays?api_key=${apiKey}&country=${country}&year=${year}&month=${month}&day=${day}`,
+          method: "GET",
+          dataType: "json",
+          success: function (response) {
+            if (response.response.holidays.length > 0) {
+              $("#isHoliday").html("<b>YES</b>");
+              $("#dateNow").html(response.response.holidays[0].date.iso);
+              response.response.holidays.forEach(function (data) {
+                $("#listOfDesc").append(
+                  "<li><h3>" +
+                    data.name +
+                    "</h3></br>" +
+                    data.description +
+                    "</li>"
+                );
+              });
+            } else {
+              $("#isHoliday").html("<b>NO</b>");
+              $("#dateNow").html(year + "-" + month + "-" + day);
+              $("#holidayDesc").html("<h3>Today is not a holiday.</h3>");
+            }
+          },
+          error: function () {
+            $("#isHoliday").html("<b>Error fetching holiday data</b>");
+          },
+        });
+      });
+
+      var myFullpage = new fullpage("#fullpage", {
+        navigation: true,
+        slidesNavigation: true,
+        controlArrows: false,
+      });
+      $(window).on("load", function () {
+        $(".fp-watermark").hide();
+      });
+    </script>
+  </body>
+</html>

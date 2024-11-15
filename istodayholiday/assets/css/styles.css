@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* border: 1px solid red; */
+}
+body {
+  font-family: "Josefin Sans", sans-serif;
+  background: #2da374;
+  color: #fff;
+}
+header {
+  position: absolute;
+  width: 100%;
+}
+header nav {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.section {
+  padding: 1rem;
+}
+.centering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10rem;
+}
+ul {
+  margin-top: 1rem;
+  padding: 0 4rem;
+}
