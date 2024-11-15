@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $.get("https://ipinfo.io?token=48fe1b062410e7", function (response) {
+  $.get("https://ipinfo.io/?token=48fe1b062410e7", function (response) {
     const country = response.country;
     $("#countryID").html(country);
     const apiKey = "dvNX1B0Bu5h7Cexf7waD4JVW9PSOej2G";
