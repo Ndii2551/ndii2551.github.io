@@ -33,7 +33,7 @@
     <header>
       <nav>
         <h1><span style="color: black">is</span>TodayHoliday?</h1>
-        <h1>ID</h1>
+        <h1 id="countryID"></h1>
       </nav>
     </header>
     <main id="fullpage">
@@ -57,51 +57,6 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
-    <script>
-      $(document).ready(function () {
-        const apiKey = "yZIwDdZXSJ1qGBSZxXUTL7IpyYVwgOjl";
-        const country = "ID";
-        const year = new Date().getFullYear();
-        const month = new Date().getMonth() + 1;
-        const day = new Date().getDate();
-
-        $.ajax({
-          url: `https://calendarific.com/api/v2/holidays?api_key=${apiKey}&country=${country}&year=${year}&month=${month}&day=${day}`,
-          method: "GET",
-          dataType: "json",
-          success: function (response) {
-            if (response.response.holidays.length > 0) {
-              $("#isHoliday").html("<b>YES</b>");
-              $("#dateNow").html(response.response.holidays[0].date.iso);
-              response.response.holidays.forEach(function (data) {
-                $("#listOfDesc").append(
-                  "<li><h3>" +
-                    data.name +
-                    "</h3></br>" +
-                    data.description +
-                    "</li>"
-                );
-              });
-            } else {
-              $("#isHoliday").html("<b>NO</b>");
-              $("#dateNow").html(year + "-" + month + "-" + day);
-              $("#holidayDesc").html("<h3>Today is not a holiday.</h3>");
-            }
-          },
-          error: function () {
-            $("#isHoliday").html("<b>Error fetching holiday data</b>");
-          },
-        });
-      });
-
-      var myFullpage = new fullpage("#fullpage", {
-        navigation: true,
-        slidesNavigation: true,
-        controlArrows: false,
-      });
-      $(window).on("load", function () {
-        $(".fp-watermark").hide();
-      });
-    </script>
+    <script src="assets/js/script.js"></script>
   </body>
 </html>
