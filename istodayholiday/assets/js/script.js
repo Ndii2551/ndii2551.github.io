@@ -42,11 +42,15 @@ $(document).ready(function () {
         },
       });
     })
-    .fail(function () {
-      // Error handling for the IP Info API call
-      $("#countryID").html("<b>Error fetching country information</b>");
+    .fail(function (jqXHR, textStatus, errorThrown) {
+      let errorMessage = "Error fetching country information";
+      if (textStatus === "error" && errorThrown === "blocked:other") {
+        errorMessage =
+          "Request was blocked. Please check your network settings.";
+      }
+      $("#countryID").html("<b>" + errorMessage + "</b>");
       $("#isHoliday").html("<b>?</b>");
-      $("#dateNow").html(new Date().toISOString().split("T")[0]); // Current date in YYYY-MM-DD format
+      $("#dateNow").html(new Date().toISOString().split("T")[0]);
       $("#holidayDesc").html(
         "<h3>Unable to retrieve holiday information.</h3>"
       );
