@@ -52,7 +52,7 @@ $(document).ready(function () {
       $("#isHoliday").html("<b>?</b>");
       $("#dateNow").html(new Date().toISOString().split("T")[0]);
       $("#holidayDesc").html(
-        "<h3>Unable to retrieve holiday information.</h3>"
+        "<h3>Unable to retrieve holiday information, maybe you could try using another browser.</h3>"
       );
     });
 });
